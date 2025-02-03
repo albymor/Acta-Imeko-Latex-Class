@@ -24,6 +24,12 @@ jobs:
           docker run --rm -v ${{ github.workspace }}:/workdir latex-builder \
           -c "cd 'bare article template' && pdflatex imeko-bare-article.tex && bibtex imeko-bare-article && pdflatex imeko-bare-article.tex && pdflatex imeko-bare-article.tex"
 
+      - name: Clean LaTeX Auxiliary Files
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workdir latex-builder \
+          -c "cd 'bare article template' && && latexmk -c && rm -f *.bbl *.nav *.run.xml *.snm *-blx.bib *.synctex.gz *.auxlock *.md5 ./external/*"
+
+
       - name: Compile guide.tex
         run: |
           docker run --rm -v ${{ github.workspace }}:/workdir latex-builder \
@@ -35,7 +41,7 @@ jobs:
           cp -r class release/
           cp -r "bare article template" release/
           cp -r "Original Acta IMEKO template" release/
-          cp guide/guide.pdf release/bare\ article\ template/
+          cp guide/guide.pdf release/
           cp bare\ article\ template/imeko-bare-article.pdf release/bare\ article\ template/
 
       - name: Create ZIP archive
