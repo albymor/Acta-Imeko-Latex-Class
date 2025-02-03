@@ -27,7 +27,7 @@ jobs:
       - name: Clean LaTeX Auxiliary Files
         run: |
           docker run --rm -v ${{ github.workspace }}:/workdir latex-builder \
-          -c "cd 'bare article template' && && latexmk -c && rm -f *.bbl *.nav *.run.xml *.snm *-blx.bib *.synctex.gz *.auxlock *.md5 ./external/*"
+          -c "cd 'bare article template' && latexmk -c && rm -f *.bbl *.nav *.run.xml *.snm *-blx.bib *.synctex.gz *.auxlock *.md5 ./external/*"
 
 
       - name: Compile guide.tex
