@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install LaTeX
-        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra biber
+        run: sudo apt-get update && sudo apt-get install -y \
+       texlive-latex-base texlive-latex-extra texlive-fonts-recommended \
+       texlive-bibtex-extra biber texlive-fonts-extra
 
       - name: Compile imeko-bare-article.tex
         run: |
