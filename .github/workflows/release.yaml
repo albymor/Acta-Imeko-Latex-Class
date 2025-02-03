@@ -22,12 +22,12 @@ jobs:
       - name: Compile imeko-bare-article.tex
         run: |
           docker run --rm -v ${{ github.workspace }}:/workdir latex-builder \
-          bash -c "cd 'bare article template' && pdflatex imeko-bare-article.tex && bibtex imeko-bare-article && pdflatex imeko-bare-article.tex && pdflatex imeko-bare-article.tex"
+          -c "cd 'bare article template' && pdflatex imeko-bare-article.tex && bibtex imeko-bare-article && pdflatex imeko-bare-article.tex && pdflatex imeko-bare-article.tex"
 
       - name: Compile guide.tex
         run: |
           docker run --rm -v ${{ github.workspace }}:/workdir latex-builder \
-          bash -c "cd guide && pdflatex guide.tex && pdflatex guide.tex"
+          -c "cd guide && pdflatex guide.tex && pdflatex guide.tex"
 
       - name: Prepare release directory
         run: |
