@@ -17,7 +17,12 @@ jobs:
         run: docker build -t latex-builder .
 
       - name: Prepare LaTeX Compilation (Copy Class Files)
-        run: cp -r class/. "bare article template/"
+        run: |
+          cd class
+          rm -f imeko_acta_production.sty
+          cd ..
+          cp -r class/. "bare article template/"
+
 
       - name: Compile imeko-bare-article.tex
         run: |
